@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CubeLab Compliments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --dark-bg: #141a0e;
+  --dark-mid: #1c2415;
+  --dark-pine: #0e1509;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dim: rgba(201,168,76,0.3);
+  --terracotta: #8b2e1a;
+  --terracotta-light: #a83925;
+  --terracotta-btn: #7a2516;
+  --parchment: #f2ead8;
+  --parchment-dark: #e8dcc4;
+  --parchment-mid: #ddd0b0;
+  --ink: #2a1f10;
+  --ink-mid: #4a3520;
+  --cream-text: #f0e8d0;
+  --muted-text: rgba(240,232,208,0.55);
+  --card-border: rgba(201,168,76,0.25);
+}
+
+html, body {
+  height: 100%;
+  background: var(--dark-pine);
+  font-family: 'Lora', Georgia, serif;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PHONE FRAME */
+.phone {
+  width: 100vw;
+  max-width: 390px;
+  height: 100vh;
+  max-height: 844px;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark-bg);
+}
+
+/* FOREST BACKGROUND */
+.forest-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, #1e2d12 0%, #141a0e 40%, #0a1008 100%);
+}
+
+.mist-layer {
+  position: absolute;
+  bottom: 30%;
+  left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(to top,
+    rgba(30,45,18,0.0) 0%,
+    rgba(40,60,25,0.15) 40%,
+    rgba(50,75,30,0.08) 70%,
+    transparent 100%
+  );
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+}
+
+.mountain-bg {
+  position: absolute;
+  bottom: 28%;
+  left: 0; right: 0;
+}
+
+.mountain-mid {
+  position: absolute;
+  bottom: 22%;
+  left: 0; right: 0;
+}
+
+.cabin-glow {
+  position: absolute;
+  bottom: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 30px;
+  background: radial-gradient(ellipse, rgba(255,200,80,0.35) 0%, transparent 70%);
+  filter: blur(8px);
+}
+
+.treeline-far {
+  position: absolute;
+  bottom: 18%;
+  left: 0; right: 0;
+}
+
+.treeline-mid {
+  position: absolute;
+  bottom: 10%;
+  left: 0; right: 0;
+}
+
+.treeline-near {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+}
+
+/* SCREENS */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* GOLD DIVIDER */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin: 6px 0;
+}
+.gold-divider span {
+  display: block;
+  height: 1px;
+  width: 40px;
+  background: var(--gold-dim);
+}
+.gold-divider .diamond {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+/* ========================
+   SPLASH SCREEN
+======================== */
+#screen-splash {
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 32px 48px;
+  text-align: center;
+}
+
+.splash-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.brand-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.brand-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.splash-title-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.splash-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.8rem;
+  font-weight: 600;
+  color: var(--cream-text);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+.splash-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.splash-tagline {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted-text);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.splash-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.btn-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  padding: 16px 24px;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+.btn-pill:active { transform: scale(0.97); }
+
+.btn-pill.primary {
+  background: var(--terracotta);
+  color: var(--cream-text);
+  box-shadow: 0 4px 20px rgba(139,46,26,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.btn-pill.primary:hover { filter: brightness(1.1); }
+
+.btn-pill.dark {
+  background: rgba(20,30,14,0.85);
+  color: var(--cream-text);
+  border: 1px solid var(--gold-dim);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.btn-pill.dark:hover { filter: brightness(1.15); }
+
+.cube-icon {
+  width: 20px; height: 20px;
+  opacity: 0.9;
+}
+
+.from-jinora {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted-text);
+}
+
+/* ========================
+   COMPLIMENT SCREEN
+======================== */
+#screen-main {
+  align-items: center;
+  justify-content: space-between;
+  padding: 56px 24px 44px;
+}
+
+.main-greeting {
+  text-align: center;
+}
+
+.main-greeting h2 {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--cream-text);
+  letter-spacing: 0.01em;
+}
+
+.main-greeting h2 .heart {
+  color: var(--terracotta-light);
+}
+
+.main-greeting p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  color: var(--muted-text);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.note-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 8px;
+}
+
+.note-card {
+  width: 100%;
+  max-width: 320px;
+  background: var(--parchment);
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+  padding: 36px 28px 40px;
+  position: relative;
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.5),
+    0 2px 8px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.note-botanical {
+  opacity: 0.5;
+}
+
+.note-compliment {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--ink);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.note-compliment.show { opacity: 1; transform: translateY(0); }
+
+.note-empty {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--parchment-mid);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.note-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.tagline-bottom {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+.admin-trigger {
+  position: absolute;
+  bottom: 44px;
+  right: 28px;
+  background: rgba(20,30,14,0.7);
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.admin-trigger:hover { border-color: var(--gold); }
+
+/* ========================
+   PIN SCREEN (ADMIN)
+======================== */
+#screen-pin {
+  align-items: center;
+  justify-content: space-between;
+  padding: 72px 32px 56px;
+}
+
+.pin-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pin-cube-icon {
+  width: 52px; height: 52px;
+  margin-bottom: 4px;
+}
+
+.pin-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--cream-text);
+}
+
+.pin-header p {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted-text);
+}
+
+.pin-dots-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.pin-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,168,76,0.4);
+  background: transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.pin-dot.filled {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.pin-key {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  color: var(--cream-text);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.pin-key:active { background: rgba(255,255,255,0.15); transform: scale(0.93); }
+.pin-key.empty { background: transparent; border-color: transparent; pointer-events: none; }
+
+.pin-forgot {
+  background: none;
+  border: none;
+  color: var(--muted-text);
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.pin-error {
+  color: var(--terracotta-light);
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  min-height: 1.2rem;
+  text-align: center;
+}
+
+/* ========================
+   ADMIN ADD SCREEN
+======================== */
+#screen-admin {
+  background: var(--parchment);
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.admin-top-bar {
+  width: 100%;
+  padding: 52px 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--parchment);
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--ink-mid);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.admin-content {
+  width: 100%;
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: var(--parchment);
+  flex: 1;
+}
+
+.admin-heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.admin-cube {
+  width: 44px; height: 44px;
+  margin-bottom: 4px;
+}
+
+.admin-heading h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.admin-heart { color: var(--terracotta); font-size: 1rem; }
+
+.admin-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--parchment-mid);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  resize: none;
+  height: 140px;
+  outline: none;
+  transition: border-color 0.2s;
+  line-height: 1.6;
+}
+
+.admin-textarea:focus { border-color: var(--ink-mid); }
+.admin-textarea::placeholder { color: var(--parchment-mid); font-style: italic; }
+
+.char-count {
+  align-self: flex-end;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  opacity: 0.5;
+  margin-top: -12px;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 16px;
+  background: var(--terracotta);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: filter 0.15s, transform 0.1s;
+  box-shadow: 0 4px 16px rgba(139,46,26,0.35);
+}
+
+.btn-add:hover { filter: brightness(1.1); }
+.btn-add:active { transform: scale(0.98); }
+
+.success-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--parchment-mid);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.success-card.show { opacity: 1; transform: translateY(0); }
+
+.success-card p {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.success-heart {
+  color: var(--terracotta);
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 4px;
+}
+
+.admin-footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 20px 28px 32px;
+  background: var(--parchment);
+  border-top: 1px solid var(--parchment-mid);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: var(--ink-mid);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* ========================
+   STAR GENERATION
+======================== */
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- FOREST BACKGROUND (shared across dark screens) -->
+  <div class="forest-bg" id="forest-bg">
+    <div class="sky-layer"></div>
+
+    <!-- Stars -->
+    <svg class="stars" viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#e8c97a" opacity="0.6">
+        <circle cx="42" cy="60" r="0.8"/><circle cx="118" cy="30" r="0.6"/><circle cx="200" cy="18" r="1"/>
+        <circle cx="265" cy="45" r="0.7"/><circle cx="330" cy="28" r="0.9"/><circle cx="370" cy="70" r="0.6"/>
+        <circle cx="80" cy="100" r="0.5"/><circle cx="155" cy="80" r="0.8"/><circle cx="310" cy="90" r="0.6"/>
+        <circle cx="22" cy="140" r="0.7"/><circle cx="350" cy="120" r="0.5"/><circle cx="240" cy="55" r="0.6"/>
+        <circle cx="170" cy="110" r="0.9"/><circle cx="295" cy="140" r="0.7"/><circle cx="60" cy="170" r="0.5"/>
+        <circle cx="380" cy="155" r="0.8"/><circle cx="130" cy="145" r="0.6"/><circle cx="220" cy="130" r="0.5"/>
+      </g>
+    </svg>
+
+    <!-- Mountains back -->
+    <svg class="mountain-bg" viewBox="0 0 390 120" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,120 60,40 130,80 200,20 270,70 340,35 390,60 390,120" fill="#1a2810" opacity="0.8"/>
+    </svg>
+
+    <!-- Mountains mid -->
+    <svg class="mountain-mid" viewBox="0 0 390 100" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,100 50,55 100,70 160,30 220,60 280,40 340,65 390,45 390,100" fill="#151e0d" opacity="0.9"/>
+    </svg>
+
+    <!-- Cabin glow -->
+    <div class="cabin-glow"></div>
+
+    <!-- Far treeline -->
+    <svg class="treeline-far" viewBox="0 0 390 90" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#111808" opacity="0.85">
+        <polygon points="10,90 22,55 34,90"/>
+        <polygon points="28,90 44,42 60,90"/>
+        <polygon points="52,90 68,50 84,90"/>
+        <polygon points="75,90 94,38 113,90"/>
+        <polygon points="105,90 122,48 139,90"/>
+        <polygon points="130,90 150,35 170,90"/>
+        <polygon points="162,90 180,45 198,90"/>
+        <polygon points="190,90 210,40 230,90"/>
+        <polygon points="220,90 242,32 264,90"/>
+        <polygon points="255,90 274,44 293,90"/>
+        <polygon points="285,90 304,38 323,90"/>
+        <polygon points="315,90 334,46 353,90"/>
+        <polygon points="345,90 362,52 379,90"/>
+        <polygon points="368,90 382,58 396,90"/>
+      </g>
+    </svg>
+
+    <!-- Near treeline -->
+    <svg class="treeline-near" viewBox="0 0 390 140" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#0c1207">
+        <polygon points="-5,140 14,85 33,140"/>
+        <polygon points="20,140 45,65 70,140"/>
+        <polygon points="55,140 82,52 109,140"/>
+        <polygon points="90,140 118,70 146,140"/>
+        <polygon points="130,140 158,48 186,140"/>
+        <polygon points="170,140 200,38 230,140"/>
+        <polygon points="212,140 242,55 272,140"/>
+        <polygon points="255,140 283,62 311,140"/>
+        <polygon points="295,140 322,50 349,140"/>
+        <polygon points="335,140 360,68 385,140"/>
+        <polygon points="365,140 385,78 405,140"/>
+        <!-- cabin silhouette -->
+        <rect x="168" y="108" width="54" height="32" fill="#0c1207"/>
+        <polygon points="155,115 195,90 235,115" fill="#0c1207"/>
+        <rect x="183" y="118" width="12" height="22" fill="#1a1200"/>
+        <!-- warm window glow -->
+        <rect x="176" y="112" width="10" height="8" fill="rgba(255,180,60,0.25)" rx="1"/>
+        <rect x="202" y="112" width="10" height="8" fill="rgba(255,180,60,0.25)" rx="1"/>
+      </g>
+    </svg>
+
+    <div class="mist-layer"></div>
+  </div>
+
+  <!-- ========================
+       SPLASH SCREEN
+  ======================== -->
+  <div class="screen active" id="screen-splash">
+    <div class="splash-logo">
+      <!-- Winged sword / studio icon approximated as cube with wings -->
+      <svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.9">
+          <!-- Wings left -->
+          <path d="M8 28 Q4 20 12 16 Q10 24 16 26" fill="#c9a84c" opacity="0.7"/>
+          <path d="M8 32 Q2 26 8 18 Q8 28 16 30" fill="#c9a84c" opacity="0.5"/>
+          <!-- Wings right -->
+          <path d="M56 28 Q60 20 52 16 Q54 24 48 26" fill="#c9a84c" opacity="0.7"/>
+          <path d="M56 32 Q62 26 56 18 Q56 28 48 30" fill="#c9a84c" opacity="0.5"/>
+          <!-- Sword -->
+          <rect x="30" y="8" width="4" height="36" rx="1" fill="#c9a84c"/>
+          <rect x="22" y="24" width="20" height="3" rx="1" fill="#c9a84c" opacity="0.8"/>
+          <circle cx="32" cy="46" r="4" fill="#c9a84c" opacity="0.7"/>
+          <!-- Star top -->
+          <polygon points="32,4 33,8 37,8 34,10 35,14 32,12 29,14 30,10 27,8 31,8" fill="#e8c97a" opacity="0.8"/>
+        </g>
+      </svg>
+      <div class="brand-name">Fall Damage</div>
+      <div class="brand-sub">Studios</div>
+    </div>
+
+    <div class="splash-title-block">
+      <div class="gold-divider"><span></span><div class="diamond"></div><span></span></div>
+      <div class="splash-title">CubeLab</div>
+      <div class="splash-subtitle">Compliments</div>
+      <div class="gold-divider"><span></span><div class="diamond"></div><span></span></div>
+      <div class="splash-tagline">A little boost,<br>made just for you.</div>
+    </div>
+
+    <div class="splash-actions">
+      <button class="btn-pill primary" onclick="goToMain()">
+        <svg class="cube-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M2 7l10 5m0 0l10-5m-10 5v10" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+        </svg>
+        Open a note
+      </button>
+      <div class="from-jinora">From Jinora ♡</div>
+    </div>
+  </div>
+
+  <!-- ========================
+       COMPLIMENT SCREEN
+  ======================== -->
+  <div class="screen" id="screen-main">
+    <div class="main-greeting">
+      <h2>Cutie. <span class="heart">♥</span></h2>
+      <p>Need a little boost?</p>
+    </div>
+
+    <div class="note-area">
+      <div class="note-card">
+        <svg class="note-botanical" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 24 C14 24 14 10 14 4" stroke="#8b6b3a" stroke-width="1" stroke-linecap="round"/>
+          <path d="M14 18 Q8 14 6 8" stroke="#8b6b3a" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <path d="M14 14 Q20 10 22 4" stroke="#8b6b3a" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <path d="M14 21 Q10 19 8 15" stroke="#8b6b3a" stroke-width="1" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="note-empty" id="note-empty">your note is waiting...</div>
+        <div class="note-compliment" id="note-compliment"></div>
+        <div class="note-divider"></div>
+      </div>
+    </div>
+
+    <div class="main-footer">
+      <button class="btn-pill dark" id="btn-note" onclick="openNote()">
+        <svg class="cube-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M2 7l10 5m0 0l10-5m-10 5v10" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+        </svg>
+        <span id="btn-note-label">Open a note</span>
+      </button>
+      <div class="tagline-bottom">You've got this.</div>
+    </div>
+
+    <!-- Admin trigger -->
+    <button class="admin-trigger" onclick="showScreen('screen-pin')" title="Leave a note" aria-label="Admin area">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="11" width="18" height="11" rx="2" stroke="#c9a84c" stroke-width="1.5" opacity="0.7"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ========================
+       PIN SCREEN
+  ======================== -->
+  <div class="screen" id="screen-pin">
+    <div class="pin-header">
+      <svg class="pin-cube-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 4L4 16v20l22 12 22-12V16L26 4z" stroke="#c9a84c" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M4 16l22 12m0 0l22-12m-22 12v24" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M22 26a4 4 0 1 0 8 0 4 4 0 0 0-8 0z" stroke="#c9a84c" stroke-width="1.2"/>
+      </svg>
+      <h2>Leave a note</h2>
+      <p>Enter cabin key 🗝</p>
+    </div>
+
+    <div class="pin-dots-row" id="pin-dots">
+      <div class="pin-dot" id="pd0"></div>
+      <div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div>
+      <div class="pin-dot" id="pd3"></div>
+    </div>
+
+    <div class="pin-error" id="pin-error"></div>
+
+    <div class="pin-keypad">
+      <button class="pin-key" onclick="pinDigit('1')">1</button>
+      <button class="pin-key" onclick="pinDigit('2')">2</button>
+      <button class="pin-key" onclick="pinDigit('3')">3</button>
+      <button class="pin-key" onclick="pinDigit('4')">4</button>
+      <button class="pin-key" onclick="pinDigit('5')">5</button>
+      <button class="pin-key" onclick="pinDigit('6')">6</button>
+      <button class="pin-key" onclick="pinDigit('7')">7</button>
+      <button class="pin-key" onclick="pinDigit('8')">8</button>
+      <button class="pin-key" onclick="pinDigit('9')">9</button>
+      <button class="pin-key empty"></button>
+      <button class="pin-key" onclick="pinDigit('0')">0</button>
+      <button class="pin-key" onclick="pinBack()">⌫</button>
+    </div>
+
+    <button class="pin-forgot" onclick="showScreen('screen-main')">← Back</button>
+  </div>
+
+  <!-- ========================
+       ADMIN ADD SCREEN
+  ======================== -->
+  <div class="screen" id="screen-admin">
+    <div class="admin-top-bar">
+      <button class="back-btn" onclick="showScreen('screen-main')">←</button>
+    </div>
+
+    <div class="admin-content">
+      <div class="admin-heading">
+        <svg class="admin-cube" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 3L3 13v18l19 10 19-10V13L22 3z" stroke="#5c3a1e" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M3 13l19 10m0 0l19-10m-19 10v20" stroke="#5c3a1e" stroke-width="1.5"/>
+          <path d="M18 22a4 4 0 1 0 8 0 4 4 0 0 0-8 0z" stroke="#5c3a1e" stroke-width="1.2"/>
+        </svg>
+        <h2>Leave a note</h2>
+        <span class="admin-heart">♥</span>
+      </div>
+
+      <textarea
+        class="admin-textarea"
+        id="admin-textarea"
+        placeholder="Write your compliment..."
+        maxlength="280"
+        oninput="updateCharCount()"
+      ></textarea>
+
+      <div class="char-count"><span id="char-count">0</span>/280</div>
+
+      <button class="btn-add" onclick="submitCompliment()">
+        Add to collection
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 5v14m-7-7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="success-card" id="success-card">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 24 C14 24 14 10 14 4" stroke="#8b6b3a" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M14 16 Q9 12 7 7" stroke="#8b6b3a" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M14 12 Q19 8 21 3" stroke="#8b6b3a" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <p>Your note has been added to the collection.</p>
+          <span class="success-heart">♡</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-footer">
+      <div class="gold-divider" style="opacity:0.4"><span style="background:var(--parchment-mid)"></span><div class="diamond" style="background:var(--ink-mid)"></div><span style="background:var(--parchment-mid)"></span></div>
+      <div class="footer-brand">Fall Damage Studios</div>
+    </div>
+  </div>
+
+</div><!-- /phone -->
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getDatabase, ref, push, get, child } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAxYWGnHSqUOQTqaNrKLmQuHiap0rOHt4M",
+  authDomain: "falldamagestudio-cubelab.firebaseapp.com",
+  databaseURL: "https://falldamagestudio-cubelab-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "falldamagestudio-cubelab",
+  storageBucket: "falldamagestudio-cubelab.firebasestorage.app",
+  messagingSenderId: "48120097781",
+  appId: "1:48120097781:web:2298d5600adf22cf018ebc",
+  measurementId: "G-1GKC7W57W2"
+};
+
+const ADMIN_PASSWORD = "1989";
+const STARTER_COMPLIMENTS = [
+  "You're so creative and that makes me feel empowered to embrace creativity myself.",
+  "You are a very calming presence in an otherwise very noisy world."
+];
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+let compliments = [];
+let shuffleQueue = [];
+
+window.showScreen = function(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const isDark = id !== 'screen-admin';
+  document.getElementById('forest-bg').style.display = isDark ? 'block' : 'none';
+}
+
+window.goToMain = function() {
+  showScreen('screen-main');
+}
+
+async function seedIfEmpty() {
+  const snap = await get(child(ref(db), 'compliments'));
+  if (!snap.exists()) {
+    for (const c of STARTER_COMPLIMENTS) {
+      await push(ref(db, 'compliments'), { text: c, createdAt: Date.now() });
+    }
+  }
+}
+
+async function loadCompliments() {
+  const snap = await get(child(ref(db), 'compliments'));
+  if (snap.exists()) {
+    compliments = Object.values(snap.val()).map(v => v.text);
+  }
+}
+
+function nextCompliment() {
+  if (!shuffleQueue.length) {
+    shuffleQueue = [...compliments].sort(() => Math.random() - 0.5);
+  }
+  return shuffleQueue.pop();
+}
+
+window.openNote = async function() {
+  await loadCompliments();
+  const el = document.getElementById('note-compliment');
+  const empty = document.getElementById('note-empty');
+  const btn = document.getElementById('btn-note-label');
+
+  if (!compliments.length) {
+    el.textContent = 'No notes yet — check back soon.';
+    el.classList.add('show');
+    empty.style.display = 'none';
+    return;
+  }
+
+  el.classList.remove('show');
+  empty.style.display = 'none';
+
+  setTimeout(() => {
+    el.textContent = nextCompliment();
+    el.classList.add('show');
+  }, 100);
+
+  btn.textContent = 'Open another note';
+}
+
+// PIN
+let pinVal = '';
+const PIN_CODE = ADMIN_PASSWORD;
+
+window.pinDigit = function(d) {
+  if (pinVal.length >= 4) return;
+  pinVal += d;
+  renderPinDots();
+  if (pinVal.length === 4) setTimeout(checkPin, 200);
+}
+
+window.pinBack = function() {
+  pinVal = pinVal.slice(0, -1);
+  renderPinDots();
+}
+
+function renderPinDots() {
+  for (let i = 0; i < 4; i++) {
+    document.getElementById('pd' + i).classList.toggle('filled', i < pinVal.length);
+  }
+}
+
+function checkPin() {
+  if (pinVal === PIN_CODE) {
+    pinVal = '';
+    renderPinDots();
+    document.getElementById('pin-error').textContent = '';
+    showScreen('screen-admin');
+  } else {
+    document.getElementById('pin-error').textContent = 'Wrong key. Try again.';
+    pinVal = '';
+    renderPinDots();
+  }
+}
+
+// ADMIN
+window.updateCharCount = function() {
+  const val = document.getElementById('admin-textarea').value;
+  document.getElementById('char-count').textContent = val.length;
+}
+
+window.submitCompliment = async function() {
+  const ta = document.getElementById('admin-textarea');
+  const text = ta.value.trim();
+  if (!text) return;
+
+  await push(ref(db, 'compliments'), { text, createdAt: Date.now() });
+  await loadCompliments();
+  shuffleQueue = [];
+
+  ta.value = '';
+  document.getElementById('char-count').textContent = '0';
+
+  const card = document.getElementById('success-card');
+  card.classList.add('show');
+  setTimeout(() => card.classList.remove('show'), 3500);
+}
+
+// Init
+seedIfEmpty().then(loadCompliments);
+</script>
+</body>
+</html>
